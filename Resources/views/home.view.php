@@ -1,7 +1,7 @@
 <?php include 'includes/header.php' ?>
 
 <div>
-  hiii
+  hiii beeeen
 </div>
 
 <?php include 'includes/footer.php' ?>

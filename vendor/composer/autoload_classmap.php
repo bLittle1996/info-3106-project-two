@@ -9,6 +9,11 @@ return array(
     'ComposerAutoloaderInitf826249ea3a86ad0d93630113450eb2d' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
     'Composer\\Autoload\\ComposerStaticInitf826249ea3a86ad0d93630113450eb2d' => $vendorDir . '/composer/autoload_static.php',
+    'Connection' => $baseDir . '/App/Connection.php',
+    'Model' => $baseDir . '/App/Models/Model.php',
+    'PagesController' => $baseDir . '/App/Controllers/PagesController.php',
+    'QueryBuilder' => $baseDir . '/App/QueryBuilder.php',
     'Request' => $baseDir . '/App/Request.php',
     'Router' => $baseDir . '/App/Router.php',
+    'Test' => $baseDir . '/App/Models/Test.php',
 );

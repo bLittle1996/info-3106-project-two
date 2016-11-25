@@ -18,11 +18,21 @@ class Router {
   }
   //sets a route that can be accessed via GET requests
   public static function get($uri, $controller) {
-    self::$routes['GET'][$uri] = $controller;
+    if($uri != '') {
+      //if it isn't the home route, add a slash for us
+      self::$routes['GET'][root() . '/' . $uri] = $controller;
+    } else {
+      self::$routes['GET'][root() . $uri] = $controller;
+    }
   }
   //sets a route that can be accessed via POST requests
   public static function post($uri, $controller) {
-    self::$routes['POST'][$uri] = $controller;
+    if($uri != '') {
+      //if it isn't the home route, add a slash for us - since root doesn't have a trailing slash. so a route::get('admin') will expect somedirad
+      self::$routes['POST'][root() . '/' . $uri] = $controller;
+    } else {
+      self::$routes['POST'][root() . $uri] = $controller;
+    }
   }
 
   public static function direct($uri, $requestType) {
@@ -42,3 +52,4 @@ class Router {
 
     return (new $controller)->$action();
   }
+}
