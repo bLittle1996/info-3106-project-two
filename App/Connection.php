@@ -9,10 +9,9 @@ class Connection {
         $config['DB_USER'],
         $config['DB_PASSWORD'],
         $config['options']
-    );
-  } catch (PDOException $e) {
+      );
+    } catch (PDOException $e) {
         die($e->getMessage());
     }
-
   }
 }

@@ -7,16 +7,24 @@ namespace Composer\Autoload;
 class ComposerStaticInitf826249ea3a86ad0d93630113450eb2d
 {
     public static $classMap = array (
+        'Cheese' => __DIR__ . '/../..' . '/App/Models/Cheese.php',
         'ComposerAutoloaderInitf826249ea3a86ad0d93630113450eb2d' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInitf826249ea3a86ad0d93630113450eb2d' => __DIR__ . '/..' . '/composer/autoload_static.php',
         'Connection' => __DIR__ . '/../..' . '/App/Connection.php',
+        'Dough' => __DIR__ . '/../..' . '/App/Models/Dough.php',
         'Model' => __DIR__ . '/../..' . '/App/Models/Model.php',
+        'Order' => __DIR__ . '/../..' . '/App/Models/Order.php',
         'PagesController' => __DIR__ . '/../..' . '/App/Controllers/PagesController.php',
-        'QueryBuilder' => __DIR__ . '/../..' . '/App/QueryBuilder.php',
+        'Pizza' => __DIR__ . '/../..' . '/App/Models/Pizza.php',
+        'PizzaController' => __DIR__ . '/../..' . '/App/Controllers/PizzaController.php',
         'Request' => __DIR__ . '/../..' . '/App/Request.php',
         'Router' => __DIR__ . '/../..' . '/App/Router.php',
-        'Test' => __DIR__ . '/../..' . '/App/Models/Test.php',
+        'Sauce' => __DIR__ . '/../..' . '/App/Models/Sauce.php',
+        'Session' => __DIR__ . '/../..' . '/App/Session.php',
+        'Topping' => __DIR__ . '/../..' . '/App/Models/Topping.php',
+        'User' => __DIR__ . '/../..' . '/App/Models/User.php',
+        'UsersController' => __DIR__ . '/../..' . '/App/Controllers/UsersController.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
