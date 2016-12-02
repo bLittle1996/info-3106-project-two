@@ -4,6 +4,10 @@ class Order extends Model {
   public $id;
   public $user_id;
   public $total_price;
+  public $address;
+  public $postal_code;
+  public $city;
+  public $province;
 
   public function pizzas() {
     try {
@@ -19,9 +23,13 @@ class Order extends Model {
 
   public function save() {
     try {
-      $stmt = $this->pdo->prepare("INSERT INTO orders (user_id, total_price) VALUES (:user_id, :total_price)");
+      $stmt = $this->pdo->prepare("INSERT INTO orders (user_id, total_price, city, province, postal_code, address) VALUES (:user_id, :total_price, :city, :province, :postal_code, :address)");
       $stmt->bindValue(':user_id', $this->user_id);
       $stmt->bindValue(':total_price', $this->total_price);
+      $stmt->bindValue(':city', $this->city);
+      $stmt->bindValue(':province', $this->province);
+      $stmt->bindValue(':address', $this->address);
+      $stmt->bindValue(':postal_code', $this->postal_code);
       if($stmt->execute()) {
         $this->id = self::getLastOrderId();
         return $this->id;

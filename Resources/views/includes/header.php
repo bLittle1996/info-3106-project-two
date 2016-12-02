@@ -12,7 +12,7 @@
   <header>
     <div class="wrapper">
       <div class="title">
-        Little Toni's Lovely Livorno Pizza
+        <a href="<?= url('/') ?>">Little Toni's Lovely Livorno Pizza</a>
       </div>
       <nav>
         <?php if(Session::get('logged_in_user')) : ?>

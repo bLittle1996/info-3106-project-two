@@ -19,6 +19,13 @@ header {
   padding: 1em 3em;
   .title {
     font-size: 24px;
+    a {
+      text-decoration: none;
+      color: black;
+      &:visited {
+        color: black;
+      }
+    }
   }
 
   nav {
@@ -155,6 +162,12 @@ footer {
 
   .order {
     padding-bottom: 1em;
+  }
+
+  .shipping {
+    .shipping-info {
+      margin-left: 1em;
+    }
   }
 
   .pizza {

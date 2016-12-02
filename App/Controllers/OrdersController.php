@@ -9,6 +9,10 @@ class OrdersController {
     $order = new Order();
     $order->total_price = 9.99; //all orders
     $order->user_id = Session::get('logged_in_user')['id'];
+    $order->city = Session::get('logged_in_user')['city'];
+    $order->address = Session::get('logged_in_user')['address'];
+    $order->postal_code = Session::get('logged_in_user')['postal_code'];
+    $order->province = Session::get('logged_in_user')['province'];
     if($order->save() !== false) {
       foreach(Session::get('pizzas') as $pizza) {
         $orderedPizza = new Pizza();
@@ -24,6 +28,6 @@ class OrdersController {
       }
     }
     Session::set('pizzas', []);
-    return redirect('/order');
+    return redirect('/order/confirmed');
   }
 }

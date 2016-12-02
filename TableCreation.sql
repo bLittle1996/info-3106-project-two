@@ -26,6 +26,10 @@ CREATE TABLE orders (
 	id int primary key auto_increment,
     user_id int,
     total_price decimal(10,2),
+	city varchar(255),
+    province varchar(255),
+    address varchar(255),
+    postal_code varchar(255),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 

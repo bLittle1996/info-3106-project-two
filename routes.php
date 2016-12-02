@@ -6,6 +6,7 @@
   Router::get('login', 'PagesController@login');
   Router::get('order', 'PagesController@order');
   Router::get('order/make', 'PagesController@makeOrder');
+  Router::get('order/confirmed', 'PagesController@viewLastOrder');
   Router::get('logout', 'PagesController@logout');
   Router::get('account', 'PagesController@account');
   //POST ROUTES

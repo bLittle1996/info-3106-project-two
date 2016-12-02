@@ -28,4 +28,8 @@ class PagesController {
   public function account() {
     require 'resources/views/account.view.php';
   }
+
+  public function viewLastOrder() {
+    require 'resources/views/orderConfirm.view.php';
+  }
 }

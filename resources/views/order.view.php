@@ -45,6 +45,12 @@ $user = User::find(Session::get('logged_in_user')['id']);
                 </div>
               </div>
             <?php endforeach ?>
+            <div class="shipping">
+              <strong>Shipped To:</strong>
+              <div class="shipping-info">
+                <?= "$order->address, $order->postal_code in $order->city, $order->province" ?>
+              </div>
+            </div>
           </div>
         <?php endforeach ?>
       <?php else : ?>
