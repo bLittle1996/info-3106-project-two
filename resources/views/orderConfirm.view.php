@@ -1,7 +1,7 @@
 <?php include 'includes/superAdvancedAuth.php' ?>
 <?php
 $user = User::find(Session::get('logged_in_user')['id']);
-$order = $user->orders()[0];
+$order = $user->orders()[count($user->orders()) - 1];
 ?>
 <?php include 'includes/header.php' ?>
 <div class="content wrapper">
