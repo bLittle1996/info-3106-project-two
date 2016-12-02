@@ -1,47 +1,55 @@
-<?php if(!Session::get('logged_in_user')) {
-  echo 'hiii';
-  redirect('/login');
-} ?>
+<?php include 'includes\superAdvancedAuth.php' ?>
 
 <?php
 $user = User::find(Session::get('logged_in_user')['id']);
 ?>
 
 <?php include 'includes/header.php' ?>
-<div class="content">
+<div class="content wrapper">
   <div class="orders-container">
     <div class="name">
-      You've ordered:
+      <h2>You've ordered:</h2>
     </div>
     <div class="orders">
       <?php if(count($user->orders())) : ?>
         <?php foreach($user->orders() as $order) : ?>
           <div class="order">
+            <div class="number">
+              <strong>Order #<?= $order->id ?>:</strong>
+            </div>
             <?php foreach($order->pizzas() as $pizza) : ?>
               <div class="pizza">
-                <div class="dough">
-                  <?= $pizza->dough()->name ?>
+                <div class="number">
+                  Pizza #<?= $pizza->id ?>:
                 </div>
-                <div class="sauce">
-                  <?= $pizza->sauce()->name ?>
-                </div>
-                <div class="cheese">
-                  <?= $pizza->cheese()->name ?>
-                </div>
-                <div class="toppings">
-                  <?php foreach($pizza->toppings() as $topping) : ?>
-                    <div class="topping">
-                      <?= $topping->name ?>
+                <div class="ingredients">
+                  <div class="base-ingredients">
+                    <div class="dough">
+                      Crust: <?= $pizza->dough()->name ?>
                     </div>
-                  <?php endforeach ?>
+                    <div class="sauce">
+                      Sauce: <?= $pizza->sauce()->name ?>
+                    </div>
+                    <div class="cheese">
+                      Cheese: <?= $pizza->cheese()->name ?>
+                    </div>
+                  </div>
+                  <div class="toppings">
+                    Toppings:
+                    <?php foreach($pizza->toppings() as $topping) : ?>
+                      <div class="topping">
+                        <?= $topping->name ?>
+                      </div>
+                    <?php endforeach ?>
+                  </div>
                 </div>
-                <?= $pizza->getToppingsAsString() ?>
               </div>
             <?php endforeach ?>
           </div>
         <?php endforeach ?>
       <?php else : ?>
-        <div class="order">You do not have any orders</div>
+        <div class="order">Nothing. Nothing at all.</div>
+        <div class="order">:(</div>
       <?php endif ?>
     </div>
   </div>

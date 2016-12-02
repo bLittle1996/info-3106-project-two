@@ -15,6 +15,7 @@ class ComposerStaticInitf826249ea3a86ad0d93630113450eb2d
         'Dough' => __DIR__ . '/../..' . '/App/Models/Dough.php',
         'Model' => __DIR__ . '/../..' . '/App/Models/Model.php',
         'Order' => __DIR__ . '/../..' . '/App/Models/Order.php',
+        'OrdersController' => __DIR__ . '/../..' . '/App/Controllers/OrdersController.php',
         'PagesController' => __DIR__ . '/../..' . '/App/Controllers/PagesController.php',
         'Pizza' => __DIR__ . '/../..' . '/App/Models/Pizza.php',
         'PizzaController' => __DIR__ . '/../..' . '/App/Controllers/PizzaController.php',

@@ -14,6 +14,7 @@ return array(
     'Dough' => $baseDir . '/App/Models/Dough.php',
     'Model' => $baseDir . '/App/Models/Model.php',
     'Order' => $baseDir . '/App/Models/Order.php',
+    'OrdersController' => $baseDir . '/App/Controllers/OrdersController.php',
     'PagesController' => $baseDir . '/App/Controllers/PagesController.php',
     'Pizza' => $baseDir . '/App/Models/Pizza.php',
     'PizzaController' => $baseDir . '/App/Controllers/PizzaController.php',

@@ -24,4 +24,8 @@ class PagesController {
   public function makeOrder() {
     require 'resources/views/makeOrder.view.php';
   }
+
+  public function account() {
+    require 'resources/views/account.view.php';
+  }
 }

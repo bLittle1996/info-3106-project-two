@@ -3,29 +3,30 @@
 } ?>
 <?php include 'includes/header.php' ?>
 
-<div class="content">
+<div class="content wrapper">
   <form action="<?= url('/register') ?>" method="POST">
-    <div>
+    <h2>Register</h2>
+    <div class='input'>
       <label for="name">Enter name:</label>
       <input type="text" name="name" placeholder="John Doe">
     </div>
-    <div>
+    <div class='input'>
       <label for="email">Enter email address:</label>
       <input type="email" name="email" placeholder="jdoe@gmail.com">
     </div>
-    <div>
+    <div class='input'>
       <label for="address">Enter shipping address:</label>
       <input type="text" name="address" placeholder="123 Street Avenue Boulevard">
     </div>
-    <div>
+    <div class='input'>
       <label for="postal_code">Enter postal code:</label>
       <input type="text" name="postal_code" placeholder="Y2K 8P0">
     </div>
-    <div>
+    <div class='input'>
       <label for="city">Enter city:</label>
       <input type="text" name="city" placeholder="Toronto">
     </div>
-    <div>
+    <div class='input'>
       <label for="province">Select province:</label>
       <select name="province">
         <option value="" disabled selected>Pick one</option>

@@ -23,7 +23,7 @@ class UsersController {
     }
     return redirect('/login');
   }
-  
+
 
   public function register() {
     $valid = true;
@@ -59,5 +59,36 @@ class UsersController {
     } else {
       redirect('/register');
     }
+  }
+
+  public function update() {
+    if(empty($_POST['name']) || empty($_POST['city']) || empty($_POST['province']) || empty($_POST['postal_code']) || empty($_POST['address'])) {
+      Session::set('errors', 'Please make sure all fields are filled.');
+      return redirect('/account');
+    }
+    try {
+      $user = new User();
+      $user = User::find(Session::get('logged_in_user')['id']);
+      $stmt = Connection::make()->prepare("UPDATE users SET name = :name, address = :address, city = :city, province = :province, postal_code = :postal_code WHERE id = :id");
+      $stmt->bindValue(":name", $_POST['name']);
+      $stmt->bindValue(":address", $_POST['address']);
+      $stmt->bindValue(":city", $_POST['city']);
+      $stmt->bindValue(':province', $_POST['province']);
+      $stmt->bindValue(":postal_code", $_POST['postal_code']);
+      $stmt->bindValue(":id", $user->id, PDO::PARAM_INT);
+      if($stmt->execute()) {
+        $user = User::find($user->id);
+        Session::set('logged_in_user', json_decode(json_encode($user), true));
+        Session::set('errors', 'Updated your account.');
+        return redirect('/account');
+      } else {
+        Session::set('errors', 'Unable to update your account.');
+        return redirect('/account');
+      }
+    } catch (Exception $e) {
+        Session::set('errors', 'Oops. ' . $e->getMessage());
+        return redirect('/account');
+    }
+
   }
 }

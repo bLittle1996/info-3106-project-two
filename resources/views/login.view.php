@@ -3,13 +3,14 @@
 } ?>
 <?php include 'includes/header.php' ?>
 
-<div class="content">
+<div class="content wrapper">
   <form action="<?= url('login') ?>" method="POST">
-    <div>
+    <h2>Login</h2>
+    <div class="input">
       <label for="email">Enter email address:</label>
       <input type="email" name="email" placeholder="jdoe@gmail.com">
     </div>
-    <div>
+    <div class="input">
       <label for="password">Enter password:</label>
       <input type="password" placeholder="this is just for show">
     </div>

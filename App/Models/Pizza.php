@@ -54,14 +54,36 @@ class Pizza extends Model {
 
   public function save() {
     try {
-      $stmt = $this->pdo->prepare("INSERT INTO pizzas (dough_id, sauce_id, cheese_id, price) VALUES (:dough_id, :sauce_id, :cheese_id, :price)");
-      $stmt->bindValue('dough_id', $this->dough_id, PDO::PARAM_INT);
-      $stmt->bindValue('sauce_id', $this->sauce_id, PDO::PARAM_INT);
-      $stmt->bindValue('cheese_id', $this->cheese_id, PDO::PARAM_INT);
-      $stmt->bindValue('price', $this->price);
+      $sql;
+      if($this->order_id) {
+        $sql = "INSERT INTO pizzas (order_id, dough_id, sauce_id, cheese_id, price) VALUES (:order_id, :dough_id, :sauce_id, :cheese_id, :price)";
+      } else {
+        $sql = "INSERT INTO pizzas (dough_id, sauce_id, cheese_id, price) VALUES (:dough_id, :sauce_id, :cheese_id, :price)";
+      }
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindValue(':order_id', $this->order_id, PDO::PARAM_INT);
+      $stmt->bindValue(':dough_id', $this->dough_id, PDO::PARAM_INT);
+      $stmt->bindValue(':sauce_id', $this->sauce_id, PDO::PARAM_INT);
+      $stmt->bindValue(':cheese_id', $this->cheese_id, PDO::PARAM_INT);
+      $stmt->bindValue(':price', $this->price);
+      if($stmt->execute()) {
+        $this->id = self::getLastPizzaId();
+        return $this->id;
+      } else {
+        return false;
+      }
     } catch (Exception $e) {
       return null;
     }
+  }
 
+  private static function getLastPizzaId() {
+    try {
+      $stmt = (new self)->pdo->prepare("SELECT * FROM pizzas ORDER BY id desc");
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_CLASS, 'Order')[0]->id;
+    } catch(Exception $e) {
+      return null;
+    }
   }
 }
